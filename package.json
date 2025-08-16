@@ -1,0 +1,116 @@
+{
+  "name": "@alatpay/react-sdk",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "ALATPay is a developer-friendly React SDK that provides seamless integration with ALATPay's payment platform. Built with TypeScript, featuring React Context patterns, and designed for rapid implementation in modern React applications.",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/index.es.js"
+      },
+      "require": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/index.cjs.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && yarn run build:types",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:analyze": "npm run build && bundlesize",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext .ts,.tsx --fix",
+    "lint:check": "eslint . --ext .ts,.tsx",
+    "preview": "vite preview",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "demo": "cd demo && npm run dev",
+    "security:audit": "npm audit && snyk test",
+    "prepare": "husky install",
+    "prepublishOnly": "npm run build && npm run test:run && npm run security:audit"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "@storybook/addon-a11y": "^9.1.2",
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/addon-interactions": "^8.6.14",
+    "@storybook/react-vite": "^9.1.2",
+    "@testing-library/jest-dom": "^6.7.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^24.3.0",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@typescript-eslint/eslint-plugin": "^8.39.1",
+    "@typescript-eslint/parser": "^8.39.1",
+    "@vitejs/plugin-react-swc": "^4.0.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "bundlesize": "^0.18.2",
+    "eslint": "^9.33.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "husky": "^9.1.7",
+    "jsdom": "^26.1.0",
+    "lint-staged": "^16.1.5",
+    "prettier": "^3.6.2",
+    "storybook": "^9.1.2",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.39.1",
+    "vite": "^7.1.2",
+    "vite-plugin-dts": "^4.5.4",
+    "vite-plugin-lib-inject-css": "^2.2.2",
+    "vitest": "^3.2.4"
+  },
+  "bundlesize": [
+    {
+      "path": "./dist/index.es.js",
+      "maxSize": "50 kB"
+    }
+  ],
+  "keywords": [
+    "react",
+    "payment",
+    "sdk",
+    "alatpay",
+    "fintech"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
